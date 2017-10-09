@@ -39,6 +39,7 @@ DOWNLOAD_TIMEOUT = 5
 # Disable cookies (enabled by default)
 COOKIES_ENABLED = True
 
+LOG_LEVEL = 'INFO'
 # Disable Telnet Console (enabled by default)
 #TELNETCONSOLE_ENABLED = False
 

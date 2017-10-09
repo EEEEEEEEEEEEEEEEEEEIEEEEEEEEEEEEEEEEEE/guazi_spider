@@ -1,15 +1,16 @@
 from scrapy import Request
-import scrapy
 import re
 import execjs
 from tutorial.items import TutorialItem
 from collections import OrderedDict
+from scrapy_redis import spiders
 
 
-class CarSpider(scrapy.Spider):
+class CarSpider(spiders.RedisSpider):
     name = 'car'
     allowed_domains = ['guazi.com']
     url = 'https://www.guazi.com/www/'
+    redis_key = 'car:requests'
 
     def start_requests(self):
         yield Request(url=self.url, dont_filter=True, callback=self.get_cookie)
@@ -30,9 +31,7 @@ class CarSpider(scrapy.Spider):
         yield Request(url=self.url, cookies=cookies, dont_filter=True, callback=self.buy_car)
 
     def buy_car(self, response):
-        for page in range(1, 100):
-            buy_url = 'https://www.guazi.com/www/buy/o{page}'.format(page=page)
-            yield Request(url=buy_url, callback=self.buy_parse)
+        pass
 
     def buy_parse(self, response):
         res = response.xpath('//ul[@class="carlist clearfix js-top"]/li/a')
@@ -56,3 +55,12 @@ class CarSpider(scrapy.Spider):
             item['pic'] = pic
             item['url'] = url
             yield item
+
+
+
+
+
+
+
+
+
