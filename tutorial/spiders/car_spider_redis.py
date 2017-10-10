@@ -56,11 +56,3 @@ class CarSpider(spiders.RedisSpider):
             item['url'] = url
             yield item
 
-
-
-
-
-
-
-
-
