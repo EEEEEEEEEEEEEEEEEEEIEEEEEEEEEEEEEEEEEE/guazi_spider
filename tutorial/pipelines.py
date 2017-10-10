@@ -23,11 +23,7 @@ class DuplicatesPipeline(object):
 
 class SqlPipeline(object):
     def __init__(self):
-<<<<<<< HEAD
         self.coon = pymysql.connect(host='139.224.134.103', port=3306, user='***', passwd='***', db='test', charset='utf8')
-=======
-        self.coon = pymysql.connect(host='139.224.134.103', port=3306, user='xiangchen', passwd='***', db='test', charset='utf8')
->>>>>>> dd5cf3a586389e22ffd0ee11c858fa027bd97e81
         self.cur = self.coon.cursor()
 
     def process_item(self, item, spider):
